@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>METANIT.COM</title>
+</head>
+<body>
+    <h2>Добавление студента</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Выберите курсы</label><br>
+            <div>
+            {% for course in courses %}
+                <input type="checkbox" name="courses" value="{{course.id}}" />{{ course.name}} <br />
+            {% endfor %}
+            </div>
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>
